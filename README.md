@@ -25,5 +25,5 @@ If you have any notes to add for your TA about the project specs or creative add
 
 Students
 
-Adrián O. Cruz Silva
-Natalia I. Roldán Pérez
+Adrián O. Cruz Silva, adrian.cruz4@upr.edu
+Natalia I. Roldán Pérez, natalia.roldan@upr.edu
