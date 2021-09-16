@@ -163,19 +163,26 @@ void Particle::update(){
 }
 
 //------------------------------------------------------------------
+
+
+//continuesly randomizes the color of each particle in all 4 modes.
 void Particle::draw(){
 
 	if( mode == PARTICLE_MODE_ATTRACT ){
-		ofSetColor(255, 63, 180);
+		//rand()%256 selects a random number between 0 and 255
+		ofSetColor(rand()%256,rand()%256,rand()%256);
 	}
 	else if( mode == PARTICLE_MODE_REPEL ){
-		ofSetColor(208, 255, 63);
+		
+		ofSetColor(rand()%256,rand()%256,rand()%256);
 	}
 	else if( mode == PARTICLE_MODE_NOISE ){
-		ofSetColor(99, 63, 255);
+		
+		ofSetColor(rand()%256,rand()%256,rand()%256);
 	}
 	else if( mode == PARTICLE_MODE_NEAREST_POINTS ){
-		ofSetColor(103, 160, 237);
+		
+		ofSetColor(rand()%256,rand()%256,rand()%256);
 	}
 			
 	ofDrawCircle(pos.x, pos.y, scale * 4.0);
