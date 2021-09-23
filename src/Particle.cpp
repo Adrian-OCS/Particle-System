@@ -133,8 +133,14 @@ void Particle::update(){
 			}
 		
 		}
-		
+
 	}
+	else if( mode == PARTICLE_MODE_PAUSE ){
+		vel.x = 0;
+		vel.y = 0;
+	}
+		
+
 	
 	
 	// UPDATE OUR POSITION
@@ -184,6 +190,13 @@ void Particle::draw(){
 		
 		ofSetColor(rand()%256,rand()%256,rand()%256);
 	}
+	else if( mode == PARTICLE_MODE_PAUSE ){
+		
+		ofSetColor(rand()%256,rand()%256,rand()%256);
+	}
+
+
+	
 			
 	ofDrawCircle(pos.x, pos.y, scale * 4.0);
 }

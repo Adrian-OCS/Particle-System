@@ -64,7 +64,7 @@ void ofApp::draw(){
 	}
 
 	ofSetColor(230);	
-	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys 1-4 to change mode.", 10, 20);
+	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys: 1-4 to change mode, A/a to pause", 10, 20);
 }
 
 //--------------------------------------------------------------
@@ -87,8 +87,9 @@ void ofApp::keyPressed(int key){
 		resetParticles();
 	}	
 		
-	if( key == ' ' ){
-		resetParticles();
+	if( key == 'A' || key == 'a' ){
+		currentMode = PARTICLE_MODE_PAUSE;
+		currentModeStr = "A/a- PARTICLE_MODE_PAUSE: pauses particles in place";
 	}
 }
 
