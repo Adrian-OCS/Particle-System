@@ -10,6 +10,11 @@ void Particle::setMode(particleMode newMode){
 	mode = newMode;
 }
 
+//sets the action performed
+void Particle::setAction(actionToPerform newAction){
+	action = newAction;
+}
+
 //------------------------------------------------------------------
 void Particle::setAttractPoints( vector <glm::vec3> * attract ){
 	attractPoints = attract;
@@ -31,6 +36,11 @@ void Particle::reset(){
 	frc   = glm::vec3(0,0,0);
 	
 	scale = ofRandom(0.5, 1.0);
+
+	//variable to compare the scale before making size triple
+	adjusted_scale = scale*3;
+
+	action = DEFAULT_ACTION;
 	
 	if( mode == PARTICLE_MODE_NOISE ){
 		drag  = ofRandom(0.97, 0.99);
@@ -139,7 +149,11 @@ void Particle::update(){
 		vel.x = 0;
 		vel.y = 0;
 	}
-		
+	
+	//if the scale has not been adjusted it triples it
+	if (action==TRIPLE_PARTICLE_SIZE && scale<=adjusted_scale){
+		scale=scale*3;
+	}
 
 	
 	

@@ -7,6 +7,7 @@ void ofApp::setup(){
 	int num = 1500;
 	p.assign(num, Particle());
 	currentMode = PARTICLE_MODE_ATTRACT;
+	currentAction = DEFAULT_ACTION;
 
 	currentModeStr = "1 - PARTICLE_MODE_ATTRACT: attracts to mouse"; 
 
@@ -23,6 +24,7 @@ void ofApp::resetParticles(){
 	}
 	
 	attractPointsWithMovement = attractPoints;
+	currentAction = DEFAULT_ACTION;
 	
 	for(unsigned int i = 0; i < p.size(); i++){
 		p[i].setMode(currentMode);		
@@ -35,6 +37,7 @@ void ofApp::resetParticles(){
 void ofApp::update(){
 	for(unsigned int i = 0; i < p.size(); i++){
 		p[i].setMode(currentMode);
+		p[i].setAction(currentAction);
 		p[i].update();
 	}
 	
@@ -84,12 +87,19 @@ void ofApp::keyPressed(int key){
 	if( key == '4'){
 		currentMode = PARTICLE_MODE_NOISE;
 		currentModeStr = "4 - PARTICLE_MODE_NOISE: snow particle simulation"; 						
+	}
+
+	if( key == ' ')	{
 		resetParticles();
-	}	
+	}
 		
 	if( key == 'A' || key == 'a' ){
 		currentMode = PARTICLE_MODE_PAUSE;
 		currentModeStr = "A/a- PARTICLE_MODE_PAUSE: pauses particles in place";
+	}
+
+	if( key == 'I' || key == 'i' ){
+		currentAction = TRIPLE_PARTICLE_SIZE;
 	}
 }
 
