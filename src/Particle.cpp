@@ -37,8 +37,7 @@ void Particle::reset(){
 	
 	scale = ofRandom(0.5, 1.0);
 
-	//variables to compare before adjusting
-	adjusted_scale = scale*3;
+
 
 	action = DEFAULT_ACTION;
 	
