@@ -37,7 +37,7 @@ void Particle::reset(){
 	
 	scale = ofRandom(0.5, 1.0);
 
-	//variable to compare the scale before making size triple
+	//variables to compare before adjusting
 	adjusted_scale = scale*3;
 
 	action = DEFAULT_ACTION;
@@ -153,6 +153,11 @@ void Particle::update(){
 	//if the scale has not been adjusted it triples it
 	if (action==TRIPLE_PARTICLE_SIZE && scale<=adjusted_scale){
 		scale=scale*3;
+	}
+
+	else if (action==QUADRUPLE_VELOCITY){
+		vel.x*=4;
+		vel.y*=4;
 	}
 
 	

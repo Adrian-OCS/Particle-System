@@ -12,7 +12,8 @@ enum particleMode{
 //contains all actions that can be performed
 enum actionToPerform{
 	DEFAULT_ACTION,
-	TRIPLE_PARTICLE_SIZE
+	TRIPLE_PARTICLE_SIZE,
+	QUADRUPLE_VELOCITY
 };
 
 class Particle{
@@ -37,6 +38,8 @@ class Particle{
 		float uniqueVal;
 		float scale;
 		float adjusted_scale;
+		float adjusted_vel_x;
+		float adjusted_vel_y;
 		
 		particleMode mode;
 		actionToPerform action;

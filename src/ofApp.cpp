@@ -40,6 +40,7 @@ void ofApp::update(){
 		p[i].setAction(currentAction);
 		p[i].update();
 	}
+	currentAction = DEFAULT_ACTION;
 	
 	//lets add a bit of movement to the attract points
 	for(unsigned int i = 0; i < attractPointsWithMovement.size(); i++){
@@ -100,6 +101,10 @@ void ofApp::keyPressed(int key){
 
 	if( key == 'I' || key == 'i' ){
 		currentAction = TRIPLE_PARTICLE_SIZE;
+	}
+
+	if( key == 'F' || key == 'f' ){
+		currentAction = QUADRUPLE_VELOCITY;
 	}
 }
 
