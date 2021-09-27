@@ -150,11 +150,12 @@ void Particle::update(){
 		vel.y = 0;
 	}
 	
-	//if the scale has not been adjusted it triples it
-	if (action==TRIPLE_PARTICLE_SIZE && scale<=adjusted_scale){
-		scale=scale*3;
+	//triples the particle size 
+	if (action==TRIPLE_PARTICLE_SIZE){
+		scale*=3;
 	}
 
+	//quadruples the velocity
 	else if (action==QUADRUPLE_VELOCITY){
 		vel.x*=4;
 		vel.y*=4;

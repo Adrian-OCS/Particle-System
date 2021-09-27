@@ -68,7 +68,7 @@ void ofApp::draw(){
 	}
 
 	ofSetColor(230);	
-	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys: 1-4 to change mode, A/a to pause", 10, 20);
+	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset. \nKeys: 1-4 to change mode, A/a to pause \nPress I or i to triple particle size \nPress F or f to quadruple particle velocity", 10, 20);
 }
 
 //--------------------------------------------------------------
