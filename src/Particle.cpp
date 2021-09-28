@@ -150,15 +150,23 @@ void Particle::update(){
 	}
 	
 	//triples the particle size 
-	if (action==TRIPLE_PARTICLE_SIZE){
+	if (action == TRIPLE_PARTICLE_SIZE){
 		scale*=3;
 	}
 
 	//quadruples the velocity
-	else if (action==QUADRUPLE_VELOCITY){
+	else if (action == QUADRUPLE_VELOCITY){
 		vel.x*=4;
 		vel.y*=4;
 	}
+
+	//thirds particle size
+
+	else if(action == THIRD_PARTICLE_SIZE){
+		scale/=3;
+}
+
+
 
 	
 	

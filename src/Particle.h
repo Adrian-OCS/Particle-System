@@ -13,7 +13,9 @@ enum particleMode{
 enum actionToPerform{
 	DEFAULT_ACTION,
 	TRIPLE_PARTICLE_SIZE,
+	THIRD_PARTICLE_SIZE,
 	QUADRUPLE_VELOCITY
+	
 };
 
 class Particle{
