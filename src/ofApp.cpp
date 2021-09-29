@@ -68,8 +68,7 @@ void ofApp::draw(){
 	}
 
 	ofSetColor(230);	
-	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset.\nKeys: 1-4 to change mode, A/a to pause \nPress I or i to triple particle size \nPress F or f to quadruple particle velocity\nPress D or d to third particle size", 10, 20);
-}
+	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset.\nKeys: 1-4 to change mode, A/a to pause\nPress I or i to triple particle size\nPress D or d to third particle size\nPress F or f to quadruple particle velocity\nPress S or s to quarter particle velocity", 10, 20);}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
@@ -103,11 +102,16 @@ void ofApp::keyPressed(int key){
 		currentAction = TRIPLE_PARTICLE_SIZE;
 	}
 
-	if( key == 'F' || key == 'f' ){
-		currentAction = QUADRUPLE_VELOCITY;
-	}
 	if( key == 'D' || key == 'd'){
 		currentAction = THIRD_PARTICLE_SIZE;
+	}
+
+	if( key == 'F' || key == 'f' ){
+		currentAction = QUADRUPLE_PARTICLE_VELOCITY;
+	}
+
+	if( key == 'S' || key == 's'){
+		currentAction = QUARTER_PARTICLE_VELOCITY;
 	}
 }
 
