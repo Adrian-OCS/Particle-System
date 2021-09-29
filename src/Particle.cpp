@@ -37,7 +37,7 @@ void Particle::reset(){
 	
 	scale = ofRandom(0.5, 1.0);
 
-
+	velocity_multiplier = 1;
 
 	action = DEFAULT_ACTION;
 	
@@ -156,8 +156,7 @@ void Particle::update(){
 
 	//quadruples the velocity
 	else if (action == QUADRUPLE_VELOCITY){
-		vel.x*=4;
-		vel.y*=4;
+		velocity_multiplier*=4;
 	}
 
 	//thirds particle size
@@ -170,9 +169,9 @@ void Particle::update(){
 
 	
 	
-	// UPDATE OUR POSITION
+	// UPDATE OUR POSITION ACCORDING TO THE ADJUSTED VELOCITY
 	
-	pos += vel; 
+	pos += vel*velocity_multiplier; 
 	
 	
 	// LIMIT THE PARTICLES TO STAY ON SCREEN 

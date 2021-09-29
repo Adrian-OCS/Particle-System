@@ -42,6 +42,9 @@ class Particle{
 		float adjusted_scale;
 		float adjusted_vel_x;
 		float adjusted_vel_y;
+
+		//variable used to adjust the particle velocity
+		float velocity_multiplier;
 		
 		particleMode mode;
 		actionToPerform action;
