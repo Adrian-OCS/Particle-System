@@ -89,10 +89,12 @@ void ofApp::keyPressed(int key){
 		currentModeStr = "4 - PARTICLE_MODE_NOISE: snow particle simulation"; 						
 	}
 
+
 	if( key == ' ')	{
 		resetParticles();
 	}
-		
+
+
 	if( key == 'A' || key == 'a' ){
 		currentMode = PARTICLE_MODE_PAUSE;
 		currentModeStr = "A/a- PARTICLE_MODE_PAUSE: pauses particles in place";
@@ -102,7 +104,7 @@ void ofApp::keyPressed(int key){
 		currentAction = TRIPLE_PARTICLE_SIZE;
 	}
 
-	if( key == 'D' || key == 'd'){
+	if( key == 'D' || key == 'd' ){
 		currentAction = THIRD_PARTICLE_SIZE;
 	}
 
@@ -110,9 +112,27 @@ void ofApp::keyPressed(int key){
 		currentAction = QUADRUPLE_PARTICLE_VELOCITY;
 	}
 
-	if( key == 'S' || key == 's'){
+	if( key == 'S' || key == 's' ){
 		currentAction = QUARTER_PARTICLE_VELOCITY;
 	}
+
+
+	if( key == 'R' || key == 'r' ){
+		recordKeysPressed = true;
+
+	}
+
+	if ( recordKeysPressed ){
+		if ( key != 'R' && key != 'r' ){
+			vectorOfKeysPressed.push_back(key);
+		}
+		else {
+			recordKeysPressed = false;
+		}
+
+	}
+
+	
 }
 
 //--------------------------------------------------------------

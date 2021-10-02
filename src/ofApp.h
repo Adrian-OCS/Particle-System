@@ -30,5 +30,9 @@ class ofApp : public ofBaseApp{
 		vector <Particle> p;
 		vector <glm::vec3> attractPoints;
 		vector <glm::vec3> attractPointsWithMovement;
+
+		vector <int> vectorOfKeysPressed;
+		bool recordKeysPressed = false;
+
 		
 };

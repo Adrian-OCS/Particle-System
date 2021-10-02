@@ -169,7 +169,7 @@ void Particle::update(){
 	//quarters particle velocity
 	else if (action == QUARTER_PARTICLE_VELOCITY){
 		velocity_multiplier/=4;
-	}	
+	}
 
 
 

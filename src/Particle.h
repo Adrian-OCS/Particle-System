@@ -51,4 +51,6 @@ class Particle{
 		actionToPerform action;
 		
 		vector <glm::vec3> * attractPoints; 
+
+
 };
