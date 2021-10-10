@@ -33,6 +33,9 @@ class ofApp : public ofBaseApp{
 
 		vector <int> vectorOfKeysPressed;
 		bool recordKeysPressed = false;
+		bool conductReplay = false;
+		int counter = 0;
+		int frames = 0;
 
 		
 };

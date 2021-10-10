@@ -36,12 +36,33 @@ void ofApp::resetParticles(){
 //--------------------------------------------------------------
 void ofApp::update(){
 	for(unsigned int i = 0; i < p.size(); i++){
+		p[i].update();
+		//conducts the associated action in the vector every 2 seconds
+		if 	(frames<=60*vectorOfKeysPressed.size() && conductReplay){
+			//cancels replay of vector is empty
+			if (vectorOfKeysPressed.size()==0) conductReplay = false;
+
+			else if ((frames%60)==0) keyPressed(vectorOfKeysPressed[counter]);
+		}
 		p[i].setMode(currentMode);
 		p[i].setAction(currentAction);
-		p[i].update();
 	}
 	currentAction = DEFAULT_ACTION;
-	
+	if(conductReplay){
+		//adjusts the counter for the vector every 2 seconds
+		if 	(frames%60==0) counter++;
+		//clears the vector and counter when replay is over
+		if (counter>=vectorOfKeysPressed.size()){
+			vectorOfKeysPressed.clear();
+			counter=0;
+			conductReplay = false;
+		}
+		frames++;
+	}
+	else {
+		frames=0;
+	}
+
 	//lets add a bit of movement to the attract points
 	for(unsigned int i = 0; i < attractPointsWithMovement.size(); i++){
 		attractPointsWithMovement[i].x = attractPoints[i].x + ofSignedNoise(i * 10, ofGetElapsedTimef() * 0.7) * 12.0;
@@ -68,10 +89,15 @@ void ofApp::draw(){
 	}
 
 	ofSetColor(230);	
-	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset.\nKeys: 1-4 to change mode, A/a to pause\nPress I or i to triple particle size\nPress D or d to third particle size\nPress F or f to quadruple particle velocity\nPress S or s to quarter particle velocity", 10, 20);}
+	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset.\nKeys: 1-4 to change mode, A/a to pause\nPress I or i to triple particle size\nPress D or d to third particle size\nPress F or f to quadruple particle velocity\nPress S or s to quarter particle velocity\nPress R or r to start/end recording\nPress P or p to start replaying recorded keys", 10, 20);}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+	//prevents any actions from performing while in replay
+	if (conductReplay && frames%60!=0){
+		key=-1;
+	}
+
 	if( key == '1'){
 		currentMode = PARTICLE_MODE_ATTRACT;
 		currentModeStr = "1 - PARTICLE_MODE_ATTRACT: attracts to mouse"; 		
@@ -118,18 +144,20 @@ void ofApp::keyPressed(int key){
 
 
 	if( key == 'R' || key == 'r' ){
-		recordKeysPressed = true;
-
-	}
-
-	if ( recordKeysPressed ){
-		if ( key != 'R' && key != 'r' ){
-			vectorOfKeysPressed.push_back(key);
+		if(!recordKeysPressed && !conductReplay){
+			recordKeysPressed = true;
 		}
 		else {
 			recordKeysPressed = false;
 		}
+	}
 
+	if( (key == 'P' || key == 'p') && !recordKeysPressed){
+		conductReplay = true;
+	}
+
+	if ( recordKeysPressed && key!='R' && key!='r' && key!='P' && key!='p'){
+		vectorOfKeysPressed.push_back(key);
 	}
 
 	
