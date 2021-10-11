@@ -107,9 +107,10 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+	key=toupper(key);
 
 	//cancels replay
-	if( (key == 'C' || key == 'c') && conductReplay){
+	if( (key == 'C') && conductReplay){
 	conductReplay = false;
 	vectorOfKeysPressed.clear();
 	counter=0;
@@ -143,29 +144,29 @@ void ofApp::keyPressed(int key){
 	}
 
 
-	if( key == 'A' || key == 'a' ){
+	if( key == 'A'){
 		currentMode = PARTICLE_MODE_PAUSE;
 		currentModeStr = "A/a- PARTICLE_MODE_PAUSE: pauses particles in place";
 	}
 
-	if( key == 'I' || key == 'i' ){
+	if( key == 'I'){
 		currentAction = TRIPLE_PARTICLE_SIZE;
 	}
 
-	if( key == 'D' || key == 'd' ){
+	if( key == 'D'){
 		currentAction = THIRD_PARTICLE_SIZE;
 	}
 
-	if( key == 'F' || key == 'f' ){
+	if( key == 'F'){
 		currentAction = QUADRUPLE_PARTICLE_VELOCITY;
 	}
 
-	if( key == 'S' || key == 's' ){
+	if( key == 'S'){
 		currentAction = QUARTER_PARTICLE_VELOCITY;
 	}
 
 
-	if( key == 'R' || key == 'r' ){
+	if( key == 'R'){
 		if(!recordKeysPressed && !conductReplay){
 			recordKeysPressed = true;
 		}
@@ -174,11 +175,11 @@ void ofApp::keyPressed(int key){
 		}
 	}
 
-	if( (key == 'P' || key == 'p') && !recordKeysPressed){
+	if( (key == 'P') && !recordKeysPressed){
 		conductReplay = true;
 	}
 
-	if ( recordKeysPressed && key!='R' && key!='r' && key!='P' && key!='p'){
+	if ( recordKeysPressed && key!='R' && key!='P'){
 		vectorOfKeysPressed.push_back(key);
 	}
 	
