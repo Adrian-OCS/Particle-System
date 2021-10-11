@@ -103,11 +103,17 @@ void ofApp::draw(){
 	}
 
 	ofSetColor(230);	
-	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset.\nKeys: 1-4 to change mode, A/a to pause\nPress I or i to triple particle size\nPress D or d to third particle size\nPress F or f to quadruple particle velocity\nPress S or s to quarter particle velocity\nPress R or r to start/end recording\nPress P or p to start replaying recorded keys", 10, 20);}
+	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset.\nKeys: 1-4 to change mode, A/a to pause\nPress I or i to triple particle size\nPress D or d to third particle size\nPress F or f to quadruple particle velocity\nPress S or s to quarter particle velocity\nPress R or r to start/end recording\nPress P or p to start replaying recorded keys\nPress C or c to cancel replaying recorded keys", 10, 20);}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 	//prevents any actions from performing while in replay
+	if( (key == 'C' || key == 'c') && conductReplay){
+	conductReplay = false;
+	vectorOfKeysPressed.clear();
+	counter=0;
+	}
+
 	if (conductReplay && frames%60!=0){
 		key=-1;
 	}
@@ -173,7 +179,6 @@ void ofApp::keyPressed(int key){
 	if ( recordKeysPressed && key!='R' && key!='r' && key!='P' && key!='p'){
 		vectorOfKeysPressed.push_back(key);
 	}
-
 	
 }
 
