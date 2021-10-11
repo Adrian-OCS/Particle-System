@@ -19,6 +19,11 @@ enum actionToPerform{
 	
 };
 
+enum particleShape{
+	CIRCLE,
+	RECTANGLE
+};
+
 class Particle{
 
 	public:
@@ -26,6 +31,7 @@ class Particle{
 		
 		void setMode(particleMode newMode);	
 		void setAction(actionToPerform newAction);
+		void setShape(particleShape newShape);
 		void setAttractPoints( vector <glm::vec3> * attract );
 		void attractToPoint(int, int);
 		void repelFromPoint(int, int);
@@ -49,6 +55,7 @@ class Particle{
 		
 		particleMode mode;
 		actionToPerform action;
+		particleShape shape;
 		
 		vector <glm::vec3> * attractPoints; 
 

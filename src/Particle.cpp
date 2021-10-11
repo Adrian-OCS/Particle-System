@@ -15,6 +15,10 @@ void Particle::setAction(actionToPerform newAction){
 	action = newAction;
 }
 
+void Particle::setShape(particleShape newShape){
+	shape = newShape;
+}
+
 //------------------------------------------------------------------
 void Particle::setAttractPoints( vector <glm::vec3> * attract ){
 	attractPoints = attract;
@@ -40,6 +44,7 @@ void Particle::reset(){
 	velocity_multiplier = 1;
 
 	action = DEFAULT_ACTION;
+	shape = CIRCLE;
 	
 	if( mode == PARTICLE_MODE_NOISE ){
 		drag  = ofRandom(0.97, 0.99);
@@ -230,7 +235,12 @@ void Particle::draw(){
 
 
 	
-			
-	ofDrawCircle(pos.x, pos.y, scale * 4.0);
+	if (shape == CIRCLE){
+		ofDrawCircle(pos.x, pos.y, scale * 4.0);
+	}
+	else if (shape == RECTANGLE){
+		ofDrawRectangle(pos.x, pos.y, scale * 8.0, scale * 8.0);
+	}
+
 }
 

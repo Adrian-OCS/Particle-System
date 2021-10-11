@@ -25,10 +25,12 @@ void ofApp::resetParticles(){
 	
 	attractPointsWithMovement = attractPoints;
 	currentAction = DEFAULT_ACTION;
+	currentShape = CIRCLE;
 	
 	for(unsigned int i = 0; i < p.size(); i++){
 		p[i].setMode(currentMode);		
 		p[i].setAttractPoints(&attractPointsWithMovement);;
+		p[i].setShape(currentShape);
 		p[i].reset();
 	}	
 }
@@ -46,6 +48,7 @@ void ofApp::update(){
 		}
 		p[i].setMode(currentMode);
 		p[i].setAction(currentAction);
+		p[i].setShape(currentShape);
 	}
 	currentAction = DEFAULT_ACTION;
 	if(conductReplay){
@@ -79,12 +82,25 @@ void ofApp::draw(){
 	}
 	
 	ofSetColor(190);
+	//draws the shape chosen by the user (BONUS - ADDED SHAPES)
 	if( currentMode == PARTICLE_MODE_NEAREST_POINTS ){
 		for(unsigned int i = 0; i < attractPoints.size(); i++){
-			ofNoFill();
-			ofDrawCircle(attractPointsWithMovement[i], 10);
-			ofFill();
-			ofDrawCircle(attractPointsWithMovement[i], 4);
+			if(currentShape == CIRCLE){
+				ofNoFill();
+				ofDrawCircle(attractPointsWithMovement[i], 10);
+			}
+			else if(currentShape == RECTANGLE){
+				ofNoFill();
+				ofDrawRectangle(attractPointsWithMovement[i], 10, 10);
+			}
+			if(currentShape == CIRCLE){
+				ofFill();
+				ofDrawCircle(attractPointsWithMovement[i], 4);
+			}
+			else if(currentShape == RECTANGLE){
+				ofFill();
+				ofDrawRectangle(attractPointsWithMovement[i], 4, 4);
+			}
 		}
 	}
 
@@ -103,7 +119,7 @@ void ofApp::draw(){
 	}
 
 	ofSetColor(230);	
-	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset.\nKeys: 1-4 to change mode, A/a to pause\nPress I or i to triple particle size\nPress D or d to third particle size\nPress F or f to quadruple particle velocity\nPress S or s to quarter particle velocity\nPress R or r to start/end recording\nPress P or p to start replaying recorded keys\nPress C or c to cancel replaying recorded keys", 10, 20);}
+	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset.\nKeys: 1-4 to change mode, A/a to pause\nPress I or i to triple particle size\nPress D or d to third particle size\nPress F or f to quadruple particle velocity\nPress S or s to quarter particle velocity\nPress R or r to start/end recording\nPress P or p to start replaying recorded keys\nPress C or c to cancel replaying recorded keys\nPress T or t to turn shapes into rectangles\nPress Y or y tu return shapes to circles", 15, 25);}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
@@ -181,6 +197,14 @@ void ofApp::keyPressed(int key){
 
 	if ( recordKeysPressed && key!='R' && key!='P'){
 		vectorOfKeysPressed.push_back(key);
+	}
+
+	if( key == 'T'){
+		currentShape = RECTANGLE;
+	}
+
+	if( key == 'Y'){
+		currentShape = CIRCLE;
 	}
 	
 }

@@ -25,6 +25,7 @@ class ofApp : public ofBaseApp{
 		
 		particleMode currentMode;
 		actionToPerform currentAction;
+		particleShape currentShape = CIRCLE;
 		string currentModeStr; 
 
 		vector <Particle> p;
