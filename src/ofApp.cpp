@@ -88,6 +88,13 @@ void ofApp::draw(){
 		}
 	}
 
+	//Adds recording indicator
+
+	if ( recordKeysPressed ) {
+		ofSetColor(255, 0, 0);
+		ofDrawCircle(ofGetWidth()-50, 50, 10);
+	}
+
 	ofSetColor(230);	
 	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset.\nKeys: 1-4 to change mode, A/a to pause\nPress I or i to triple particle size\nPress D or d to third particle size\nPress F or f to quadruple particle velocity\nPress S or s to quarter particle velocity\nPress R or r to start/end recording\nPress P or p to start replaying recorded keys", 10, 20);}
 
