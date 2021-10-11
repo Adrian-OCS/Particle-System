@@ -107,13 +107,15 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-	//prevents any actions from performing while in replay
+
+	//cancels replay
 	if( (key == 'C' || key == 'c') && conductReplay){
 	conductReplay = false;
 	vectorOfKeysPressed.clear();
 	counter=0;
 	}
 
+	//prevents any actions from performing while in replay
 	if (conductReplay && frames%60!=0){
 		key=-1;
 	}
