@@ -241,6 +241,9 @@ void Particle::draw(){
 	else if (shape == RECTANGLE){
 		ofDrawRectangle(pos.x, pos.y, scale * 8.0, scale * 8.0);
 	}
+	else if (shape == LINES){
+		ofDrawRectangle(pos.x, pos.y, scale * 48.0, scale);
+	}
 
 }
 

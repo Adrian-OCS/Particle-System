@@ -93,11 +93,19 @@ void ofApp::draw(){
 				ofNoFill();
 				ofDrawRectangle(attractPointsWithMovement[i], 10, 10);
 			}
+			else if(currentShape == LINES){
+				ofNoFill();
+				ofDrawRectangle(attractPointsWithMovement[i], 10, 10);
+			}
 			if(currentShape == CIRCLE){
 				ofFill();
 				ofDrawCircle(attractPointsWithMovement[i], 4);
 			}
 			else if(currentShape == RECTANGLE){
+				ofFill();
+				ofDrawRectangle(attractPointsWithMovement[i], 4, 4);
+			}
+			else if(currentShape == LINES){
 				ofFill();
 				ofDrawRectangle(attractPointsWithMovement[i], 4, 4);
 			}
@@ -119,7 +127,7 @@ void ofApp::draw(){
 	}
 
 	ofSetColor(230);	
-	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset.\nKeys: 1-4 to change mode, A/a to pause\nPress I or i to triple particle size\nPress D or d to third particle size\nPress F or f to quadruple particle velocity\nPress S or s to quarter particle velocity\nPress R or r to start/end recording\nPress P or p to start replaying recorded keys\nPress C or c to cancel replaying recorded keys\nPress T or t to turn shapes into rectangles\nPress Y or y tu return shapes to circles", 15, 25);}
+	ofDrawBitmapString(currentModeStr + "\n\nSpacebar to reset.\nKeys: 1-4 to change mode, A/a to pause\nPress I or i to triple particle size\nPress D or d to third particle size\nPress F or f to quadruple particle velocity\nPress S or s to quarter particle velocity\nPress R or r to start/end recording\nPress P or p to start replaying recorded keys\nPress C or c to cancel replaying recorded keys\nPress T or t to turn shapes into rectangles\nPress Y or y to turn shapes to circles\nPress L or l to turn shapes to lines", 15, 25);}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
@@ -205,6 +213,10 @@ void ofApp::keyPressed(int key){
 
 	if( key == 'Y'){
 		currentShape = CIRCLE;
+	}
+
+	if( key == 'L'){
+		currentShape = LINES;
 	}
 	
 }

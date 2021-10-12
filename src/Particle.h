@@ -21,7 +21,8 @@ enum actionToPerform{
 
 enum particleShape{
 	CIRCLE,
-	RECTANGLE
+	RECTANGLE,
+	LINES
 };
 
 class Particle{
